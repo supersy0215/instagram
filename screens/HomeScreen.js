@@ -27,20 +27,20 @@ class HomeScreen extends React.Component {
     
   }
 
-  static navigationOptions = {
-    title: 'Instagram',
-    headerStyle: {
-      backgroundColor: '#f4511e',
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
-  };
-  onClickSignin = () => {
-    //this.props.navigation.popToTop();
-    this.props.navigation.navigate('Login');
-  };
+  // static navigationOptions = {
+  //   title: 'Instagram',
+  //   headerStyle: {
+  //     backgroundColor: '#f4511e',
+  //   },
+  //   headerTintColor: '#fff',
+  //   headerTitleStyle: {
+  //     fontWeight: 'bold',
+  //   },
+  // };
+  // onClickSignin = () => {
+  //   //this.props.navigation.popToTop();
+  //   this.props.navigation.navigate('Login');
+  // };
   
 
   render() {
