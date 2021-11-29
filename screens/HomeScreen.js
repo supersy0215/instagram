@@ -20,6 +20,7 @@ import { TOUCHABLE_STATE } from 'react-native-gesture-handler/lib/typescript/com
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import AppHeader from '../component/AppHeader';
+import CollapsibleView from '../component/CollapsibleView';
 
 class HomeScreen extends React.Component {
   constructor() {
@@ -102,7 +103,8 @@ class HomeScreen extends React.Component {
             <View style={{ width: "100%", paddingHorizontal:10}}>
               
               
-              <Text style={{ fontSize: 17 }}>
+              <CollapsibleView/>
+              {/* <Text style={{ fontSize: 17 }}>
                   <Text>supersy  </Text>
                   
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -111,7 +113,7 @@ class HomeScreen extends React.Component {
                   Nam at leo bibendum, iaculis lectus at, vulputate ligula.
                   Nam interdum tellus eu ipsum maximus elementum. Nulla auctor, justo sit amet aliquet tempus, massa est maximus elit, ac scelerisque ligula felis vel justo.
                   at, laoreet sed congue eu, malesuada nec mi. Nam ut odio in ante consequat consectetur.
-              </Text>
+              </Text> */}
             </View>
           
           </View>
