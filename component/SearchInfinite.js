@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { Component, useCallback } from 'react';
 import { FlatList } from 'react-native';
 import {
   Switch,
@@ -13,8 +13,7 @@ import {
   Dimensions
 } from 'react-native';
 
-
-
+import axios from 'axios';
 class SearchInfinite extends React.Component{
   constructor(props) {
     super(props);
@@ -27,77 +26,56 @@ class SearchInfinite extends React.Component{
     //   height: Dimensions.get('window').height
     // })
 
-
+    
     this.state = {
-      // data: [
-      //   { img: require('../img/jenny.jpeg') },
-      //   { img: require('../img/lee.jpeg') },
-      //   { img: require('../img/Nam.jpeg') },
-      //   { img: require('../img/jenny.jpeg') },
-      //   { img: require('../img/park.jpeg') },
-      //   { img: require('../img/song.jpeg') },
-      //   { img: require('../img/jenny.jpeg') },
-      //   { img: require('../img/lee.jpeg') },
-      //   { img: require('../img/Nam.jpeg') },
-      //   { img: require('../img/jenny.jpeg') },
-      //   { img: require('../img/park.jpeg') },
-      //   { img: require('../img/song.jpeg') },
-      //   { img: require('../img/jenny.jpeg') },
-      //   { img: require('../img/lee.jpeg') },
-      //   { img: require('../img/Nam.jpeg') },
-      //   { img: require('../img/jenny.jpeg') },
-      //   { img: require('../img/park.jpeg') },
-      //   { img: require('../img/song.jpeg') },
-      //   { img: require('../img/jenny.jpeg') },
-      //   { img: require('../img/lee.jpeg') },
-      //   { img: require('../img/Nam.jpeg') },
-      //   { img: require('../img/jenny.jpeg') },
-      //   { img: require('../img/park.jpeg') },
-      //   { img: require('../img/song.jpeg') },
-      //   { img: require('../img/jenny.jpeg') },
-      //   { img: require('../img/lee.jpeg') },
-      //   { img: require('../img/Nam.jpeg') },
-      //   { img: require('../img/jenny.jpeg') },
-      //   { img: require('../img/park.jpeg') },
-      //   { img: require('../img/song.jpeg') } ],
-      data:[],
+      data: [],
     }
     
   }
 
   
-  componentWiiMount() {
+  
+
+  //JSONPlaceholder
+  getData = async () => {
+    console.log('------------------------')
+    //fetch('https://jsonplaceholder.typicode.com/photos')
+      // .then(res => res.json())
+      // .then(json => {
+      //   this.setState({ data: json })
+      //   console.log(this.state.data)
+      // })
+    
+    const res = await axios.get('https://jsonplaceholder.typicode.com/photos');
+    console.log(res.data)
+    
+    const photos = res.data;
+    this.setState({ data: photos })
+    console.log(this.state.data)
+  }
+
+  
+  componentWillMount() {
     this.getData();
 
   }
-
-  //JSON
-  getData = () => {
-    fetch('https://jsonplaceholder.typicode.com/photos')
-      .then(res => res.json())
-      .then(json => console.log(json))
-      // .then(json => {
-      //   this.setState({data: json})
-      // })
-  }
-
   onEndReached = () => {
     
   }
   
-  renderItem = ({ item }) => {
+  renderItem = ({ item, index }) => {
     
     let width = Dimensions.get('window').width;
     let height = Dimensions.get('window').height;
     
-
     return (
       <View style={{ flex: 1, flexDirection:'row', backgroundColor:'pink' }}>
         
         <Image
-          source={item.img}
+          source={{uri : `${item.url}`}}
           style={{flexWrap:'wrap',width:width / 4, height: height / 6}}
         />
+        
       </View>
     );
   }
