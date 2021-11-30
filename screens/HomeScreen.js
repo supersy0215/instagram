@@ -72,7 +72,7 @@ class HomeScreen extends React.Component {
               </View>
             </View>
 
-            <View style={{backgroundColor:'blue', width:'100%',height:'100%'}}>
+            <View style={{ width:'100%',height:'100%'}}>
               <Image
                 source={require('../img/Nam.jpeg')}
                 style={{ width: '100%',height:'100%' }}
@@ -100,7 +100,6 @@ class HomeScreen extends React.Component {
               </View>
             </View>
 
-            <View style={{ width: "100%", paddingHorizontal:10}}>
               
               
               <CollapsibleView/>
@@ -114,7 +113,6 @@ class HomeScreen extends React.Component {
                   Nam interdum tellus eu ipsum maximus elementum. Nulla auctor, justo sit amet aliquet tempus, massa est maximus elit, ac scelerisque ligula felis vel justo.
                   at, laoreet sed congue eu, malesuada nec mi. Nam ut odio in ante consequat consectetur.
               </Text> */}
-            </View>
           
           </View>
         

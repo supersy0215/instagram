@@ -10,6 +10,8 @@ import {
 } from 'react-native';
 import { SearchBar } from 'react-native-elements';
 
+import SearchInfinite from '../component/SearchInfinite';
+
 import Icon from 'react-native-vector-icons/Ionicons';
 class SearchScreen extends React.Component {
   constructor(props) {
@@ -35,6 +37,8 @@ class SearchScreen extends React.Component {
           containerStyle={{backgroundColor:'white'}}
           inputContainerStyle={{backgroundColor:'white'}}
         />
+        <SearchInfinite/>
+        
       </View>
     )
   }

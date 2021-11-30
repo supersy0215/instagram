@@ -29,14 +29,12 @@ export default class CollapsibleView extends Component {
 
 
   render() {
-    const { } = this.state;
     const { container, header, headerText, content } =styles
 
     return (
       <View style={container}>
         <ScrollView contentContainerStyle={{ paddingTop: 30 }}>
        
-
           <TouchableOpacity onPress={this.toggleExpanded}>
             <View style={header}>
               <Text style={headerText}>더보기</Text>
@@ -44,7 +42,7 @@ export default class CollapsibleView extends Component {
           </TouchableOpacity>
           <Collapsible collapsed={this.state.collapsed} align="center">
             <View style={content}>
-              <Text>
+              <Text style={{fontSize: 17}}>
                 Bacon ipsum dolor amet chuck turducken landjaeger tongue spare
                 ribs Bacon ipsum dolor amet chuck turducken landjaeger tongue spare
                 ribsBacon ipsum dolor amet chuck turducken landjaeger tongue spare
@@ -60,16 +58,17 @@ export default class CollapsibleView extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#F5FCFF',
-    paddingTop: 50,
+    // flex: 1,
+    // backgroundColor: '#fff',
+    // paddingTop: 50,
+    width: "100%", paddingHorizontal:10
   },
   header: {
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#fff',
     padding: 10,
   },
   headerText: {
-    textAlign: 'center',
+    textAlign: 'right',
     fontSize: 16,
     fontWeight: '500',
   },
