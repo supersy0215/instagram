@@ -29,6 +29,8 @@ class SearchInfinite extends React.Component{
     
     this.state = {
       data: [],
+      page: 1,
+      refreshing: false
     }
     
   }
@@ -39,30 +41,32 @@ class SearchInfinite extends React.Component{
   //JSONPlaceholder
   getData = async () => {
     console.log('------------------------')
-    //fetch('https://jsonplaceholder.typicode.com/photos')
-      // .then(res => res.json())
-      // .then(json => {
-      //   this.setState({ data: json })
-      //   console.log(this.state.data)
-      // })
+    const res = await axios.get('https://jsonplaceholder.typicode.com/photos?_limit=20&_page='+this.state.page);
+    //console.log(res)
+    //console.log(res.data)
     
-    const res = await axios.get('https://jsonplaceholder.typicode.com/photos');
-    console.log(res.data)
-    
-    const photos = res.data;
-    this.setState({ data: photos })
+
+    this.setState({
+      page: this.state.page + 1, //2page
+      data: this.state.data.concat(res.data) 
+    })
+    console.log(this.state.page)
     console.log(this.state.data)
+    console.log('------------------------')
   }
 
   
-  componentWillMount() {
+  componentDidMount() {
     this.getData();
 
   }
   onEndReached = () => {
-    
+    this.getData();
   }
   
+  handleRefresh = () => {
+    this.setState({ refreshing: true, page: 1 }, this.getData );
+  }
   renderItem = ({ item, index }) => {
     
     let width = Dimensions.get('window').width;
@@ -70,12 +74,12 @@ class SearchInfinite extends React.Component{
     
     return (
       <View style={{ flex: 1, flexDirection:'row', backgroundColor:'pink' }}>
-        
-        <Image
-          source={{uri : `${item.url}`}}
-          style={{flexWrap:'wrap',width:width / 4, height: height / 6}}
-        />
-        
+        <TouchableOpacity>
+          <Image
+            source={{uri : `${item.url}`}}
+            style={{flexWrap:'wrap',width:width / 4, height: height / 6}}
+          />
+        </TouchableOpacity>
       </View>
     );
   }
@@ -88,8 +92,10 @@ class SearchInfinite extends React.Component{
           renderItem={this.renderItem}
           numColumns = {4}
           keyExtractor={(item) => item.id} 
-          onEndReached={this.onEndReached()}
+          onEndReached={this.onEndReached}
           onEndReachedThreshold={1}
+          refreshing={this.state.refreshing}
+          onRefresh={this.handleRefresh}
           
           
         />
