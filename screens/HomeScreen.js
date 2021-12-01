@@ -1,4 +1,6 @@
 import React from 'react';
+
+import { FlatList } from 'react-native';
 import {
   Button,
   SafeAreaView,
@@ -20,11 +22,13 @@ import { TOUCHABLE_STATE } from 'react-native-gesture-handler/lib/typescript/com
 
 import Icon from 'react-native-vector-icons/Ionicons';
 import AppHeader from '../component/AppHeader';
+
+//import HomeInfinite from '../component/HomeInfinite';
 import CollapsibleView from '../component/CollapsibleView';
 
 class HomeScreen extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     
   }
 
@@ -48,7 +52,7 @@ class HomeScreen extends React.Component {
     return (
       <ScrollView>
         
-        <View style={{flex: 1}}>
+        <View style={{flex: 1, backgroundColor:'#fff'}}>
           {/* <Header
             leftComponent={{  text: 'INSTARGRAM', style: { color: '#fff' }  }}
             
@@ -60,7 +64,7 @@ class HomeScreen extends React.Component {
               rightIcon3={<Icon name="add-circle-outline" size={27} />}
             
             />
-
+            
             <View style={{ padding:10, flexDirection:'row'}}>
               <Image
                 source={require('../img/jenny.jpeg')}
@@ -79,7 +83,7 @@ class HomeScreen extends React.Component {
               />
             </View>
 
-            <View style={{ paddingVertical:10, flexDirection: 'row',width:'100%',justifyContent:'space-between'}}>
+            <View style={{ paddingVertical:10, flexDirection: 'row',width:'100%',justifyContent:'space-between',backgroundColor:'#fff'}}>
               <View style={ {flexDirection:'row'}}>
                 <TouchableOpacity style={styles.iconpadding}>
                   <Icon name="heart-outline" size={25} />
@@ -99,21 +103,9 @@ class HomeScreen extends React.Component {
                 </TouchableOpacity>
               </View>
             </View>
-
               
+            <CollapsibleView/>
               
-              <CollapsibleView/>
-              {/* <Text style={{ fontSize: 17 }}>
-                  <Text>supersy  </Text>
-                  
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Etiam sed lacinia ipsum. Integer ante nisi, finibus ut velit sed, sagittis accumsan nisl.
-                  Nam quis lobortis neque, vitae semper lectus. Donec eget orci metus. Nunc vulputate ante ut nisi aliquet dignissim.
-                  Nam at leo bibendum, iaculis lectus at, vulputate ligula.
-                  Nam interdum tellus eu ipsum maximus elementum. Nulla auctor, justo sit amet aliquet tempus, massa est maximus elit, ac scelerisque ligula felis vel justo.
-                  at, laoreet sed congue eu, malesuada nec mi. Nam ut odio in ante consequat consectetur.
-              </Text> */}
-          
           </View>
         
       </ScrollView>

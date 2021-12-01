@@ -33,10 +33,11 @@ export default class CollapsibleView extends Component {
 
     return (
       <View style={container}>
-        <ScrollView contentContainerStyle={{ paddingTop: 30 }}>
+        <ScrollView contentContainerStyle={{ paddingTop: 5 }}>
        
           <TouchableOpacity onPress={this.toggleExpanded}>
             <View style={header}>
+              <Text style={{ fontSize:16 }}>supersy</Text>
               <Text style={headerText}>더보기</Text>
             </View>
           </TouchableOpacity>
@@ -58,22 +59,25 @@ export default class CollapsibleView extends Component {
 }
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
-    // backgroundColor: '#fff',
+    flex: 1,
+    backgroundColor: '#fff',
     // paddingTop: 50,
     width: "100%", paddingHorizontal:10
   },
   header: {
     backgroundColor: '#fff',
     padding: 10,
+    flex: 1,
+    flexDirection:'row',
+    justifyContent:'space-between',
   },
   headerText: {
-    textAlign: 'right',
+    //textAlign: 'right',
     fontSize: 16,
     fontWeight: '500',
   },
   content: {
-    padding: 20,
+    padding: 12,
     backgroundColor: '#fff',
   }
 
